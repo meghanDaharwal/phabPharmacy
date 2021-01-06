@@ -154,7 +154,9 @@ public class DailyProfits {
         mainPanel.add(previousProfits);
 
 // Initialising frame
-        JFrame frame = new JFrame("Phab Pharmacies - Find in Store");
+        JFrame frame = new JFrame("Phab Pharmacies - Daily Profits");
+        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+        frame.setIconImage(titleIcon.getImage());
         frame.setSize(800,530);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

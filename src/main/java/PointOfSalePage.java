@@ -212,6 +212,8 @@ public class PointOfSalePage {
         mainPanel.add(backToHome);
 
         JFrame frame = new JFrame("Phab Pharmacies - Point of Sale");
+        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+        frame.setIconImage(titleIcon.getImage());
         frame.setSize(800,530);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

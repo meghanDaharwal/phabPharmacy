@@ -237,6 +237,8 @@ public class OnlineOrderList {
 
 // Initialising frame
         JFrame frame = new JFrame("Phab Pharmacies - Online Orders List");
+        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+        frame.setIconImage(titleIcon.getImage());
         frame.setSize(800,530);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
