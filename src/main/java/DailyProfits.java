@@ -1,7 +1,17 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import static java.awt.Color.lightGray;
 import static java.awt.Color.white;
@@ -9,16 +19,28 @@ import static java.awt.Color.white;
 public class DailyProfits {
     // Icons
     Icon home = new ImageIcon("Icons/home.png");
+    Icon search = new ImageIcon("Icons/search.png");
     // Labels
     JLabel currentUserLabel = new JLabel("Logged in as: ");
     JLabel currentUser = new JLabel();
     JLabel branchNameLabel = new JLabel("Branch: ");
     JLabel branchName = new JLabel();
+
     JLabel dailyProfitLbl = new JLabel("Today's Daily Profit:");
     JLabel currencyGBP = new JLabel("GBP");
     JLabel dailyProfit = new JLabel("0.00");
+
+    JLabel dateLbl = new JLabel("Date");
+    JLabel date = new JLabel();
+    JLabel profitOnDateLbl = new JLabel("Profit on Date");
+    JLabel profitOnDate = new JLabel();
+
+    JLabel dateForSearchLbl = new JLabel("Date (dd-mm-yyyy)");
+    // Text fields
+    JFormattedTextField dateTxtField = new JFormattedTextField();
     // Buttons
     JButton toDashboardPage = new JButton("Back to Home",home);
+    JButton searchDate = new JButton(search);
 
     DailyProfits(){
 // Initialising main panel
@@ -60,10 +82,10 @@ public class DailyProfits {
 
         mainPanel.add(crrntUserDet);
 
-// Total Cost of Sale
+// Today's daily profit panel
         JPanel dailyProfitPnl = new JPanel();
         dailyProfitPnl.setBackground(white);
-        dailyProfitPnl.setBounds(95,70,600,70);
+        dailyProfitPnl.setBounds(95,100,600,70);
 
         currencyGBP.setFont(new Font(null,Font.BOLD,39));
         currencyGBP.setForeground(new Color(118,27,38));
@@ -78,25 +100,58 @@ public class DailyProfits {
 
         mainPanel.add(dailyProfitPnl);
 
-// Previous days profits table
-        JTable previousProfits = new JTable(0,2);
-        String[] columnNames = {"Date","Daily Profit on Date"};
-        for(int i=0; i<previousProfits.getColumnCount() ; i++){
-            previousProfits.getColumnModel().getColumn(i).setHeaderValue(columnNames[i]);
+// Search previous dates
+        JPanel datesSrchPnl = new JPanel();
+        datesSrchPnl.setBackground(white);
+
+        Border titBorderCodeSrch = BorderFactory.createTitledBorder(null,"Search Date for Profit",TitledBorder.DEFAULT_JUSTIFICATION,TitledBorder.DEFAULT_POSITION,new Font(null,Font.BOLD,14));
+        datesSrchPnl.setBorder(new CompoundBorder(titBorderCodeSrch,new EmptyBorder(0,0,0,0)));
+        datesSrchPnl.setVisible(true);
+        datesSrchPnl.setBounds(235,175,330,70);
+
+        searchDate.setBorderPainted(false);
+        searchDate.setFocusPainted(false);
+        searchDate.setContentAreaFilled(true);
+        searchDate.setBackground(Color.lightGray);
+
+        try {
+            String inputMask = "HH-HH-HHHH";
+            dateTxtField.setFormatterFactory(new DefaultFormatterFactory(new MaskFormatter(inputMask)));
+        } catch (ParseException ex){
         }
-        previousProfits.setShowGrid(false);
-        previousProfits.setShowHorizontalLines(false);
-        previousProfits.setShowVerticalLines(false);
-        previousProfits.getTableHeader().setBackground(new Color(173,216,232));
-        previousProfits.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(173,216,232)));
 
+        searchDate.setPreferredSize(new Dimension(25,25));
+        dateTxtField.setPreferredSize(new Dimension(160,25));
 
-        JScrollPane tabScrPne = new JScrollPane(previousProfits);
-        tabScrPne.setBounds(95,160,600,270);
-        tabScrPne.getViewport().setBackground(white);
-        tabScrPne.setBorder(BorderFactory.createLineBorder(new Color(189, 210, 231)));
+        datesSrchPnl.add(dateForSearchLbl);
+        datesSrchPnl.add(dateTxtField);
+        datesSrchPnl.add(searchDate);
 
-        mainPanel.add(tabScrPne);
+        mainPanel.add(datesSrchPnl);
+
+// Previous Profits
+        JPanel previousProfits = new JPanel();
+        previousProfits.setBackground(white);
+        Border titBorderProdDet = BorderFactory.createTitledBorder(null,"Profits from Particular Date", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION,new Font(null,Font.BOLD,14));
+
+        JLabel[] profitOnDateLabels = {dateLbl,profitOnDateLbl};
+        JLabel[] profitOnDateVals = {date,profitOnDate};
+        for(int i=0; i<profitOnDateLabels.length; i++){
+            profitOnDateLabels[i].setFont(new Font("Arial",Font.BOLD,12));
+            profitOnDateVals[i].setFont(new Font("Arial",Font.PLAIN,12));
+        }
+
+        previousProfits.setLayout(new GridLayout(2,2));
+        previousProfits.setBorder(new CompoundBorder(titBorderProdDet,new EmptyBorder(2,10,2,10)));
+        previousProfits.setVisible(true);
+        previousProfits.setBounds(235,260,330,70);
+
+        for(int i=0; i<profitOnDateLabels.length; i++){
+            previousProfits.add(profitOnDateLabels[i]);
+            previousProfits.add(profitOnDateVals[i]);
+        }
+
+        mainPanel.add(previousProfits);
 
 // Initialising frame
         JFrame frame = new JFrame("Phab Pharmacies - Find in Store");
@@ -111,6 +166,14 @@ public class DailyProfits {
 
         frame.setVisible(true);
         frame.setResizable(false);
+
+// Add servlet connection here
+        searchDate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                date.setText(dateTxtField.getText());
+            }
+        });
 
 // Back to home button
         toDashboardPage.addActionListener(new ActionListener() {
