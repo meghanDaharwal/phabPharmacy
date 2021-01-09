@@ -3,9 +3,12 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 
 import static java.awt.Color.lightGray;
@@ -102,6 +105,19 @@ public class PointOfSalePage {
         }
 
         mainPanel.add(productDetails);
+
+// ************************ This code only empties all detail values ********************************
+        addToSale.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                purchaseQuantity.setValue(0);
+                productBarcode.setText("");
+                JLabel[] allDetComps = {brandName,productName,totalDose,saleLimit,unitPrice};
+                for(int i=0;i<allDetComps.length;i++){
+                    allDetComps[i].setText("");
+                }
+            }
+        });
 
 // Search product with barcode panel
         JPanel barcodeSrchPnl = new JPanel();

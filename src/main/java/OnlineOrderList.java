@@ -272,6 +272,7 @@ public class OnlineOrderList {
                         mapPanel.setBackground(white);
                         mapFrame.setBackground(white);
                         mapFrame.add(mapPanel, BorderLayout.CENTER);
+                        mapFrame.setIconImage(titleIcon.getImage());
                         mapFrame.setVisible(true);
                         mapFrame.setResizable(false);
                     }
