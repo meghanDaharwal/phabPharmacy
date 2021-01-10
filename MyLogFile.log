@@ -1,20 +1,32 @@
-Jan 08, 2021 5:10:42 PM ServletCommunications.ReturnDetails <init>
+Jan 09, 2021 2:08:12 PM ServletCommunications.ReturnDetails <init>
 INFO: RD: connection made
-Jan 08, 2021 5:10:43 PM ClientPages.PointOfSalePage$1 actionPerformed
+Jan 09, 2021 2:08:13 PM ClientPages.PointOfSalePage$1 actionPerformed
 INFO: Accessed Servlet and Database for product details
-Jan 08, 2021 5:10:48 PM ClientPages.PointOfSalePage$2 actionPerformed
+Jan 09, 2021 2:08:56 PM ServletCommunications.ReturnDetails <init>
+INFO: RD: connection made
+Jan 09, 2021 2:08:57 PM ClientPages.PointOfSalePage$1 actionPerformed
+INFO: Accessed Servlet and Database for product details
+Jan 09, 2021 2:09:02 PM ClientPages.PointOfSalePage$2 actionPerformed
 INFO: Added product details to product list
-Jan 08, 2021 5:10:55 PM ClientPages.PointOfSalePage$3 actionPerformed
+Jan 09, 2021 2:09:06 PM ServletCommunications.ReturnDetails <init>
+INFO: RD: connection made
+Jan 09, 2021 2:09:07 PM ClientPages.PointOfSalePage$1 actionPerformed
+INFO: Accessed Servlet and Database for product details
+Jan 09, 2021 2:09:09 PM ClientPages.PointOfSalePage$2 actionPerformed
+INFO: Added product details to product list
+Jan 09, 2021 2:09:14 PM ClientPages.PointOfSalePage$3 actionPerformed
 INFO: Removed product details from product list
-Jan 08, 2021 5:11:03 PM ClientPages.PointOfSalePage$2 actionPerformed
-INFO: Added product details to product list
-Jan 08, 2021 5:11:11 PM ClientPages.PointOfSalePage$2 actionPerformed
-INFO: Added product details to product list
-Jan 08, 2021 5:11:14 PM ClientPages.PointOfSalePage$3 actionPerformed
-INFO: Removed product details from product list
-Jan 08, 2021 5:11:23 PM ServletCommunications.UpdateQuant <init>
+Jan 09, 2021 2:09:16 PM ServletCommunications.UpdateQuant <init>
 INFO: UQ: connection made
-Jan 08, 2021 5:11:24 PM ClientPages.PointOfSalePage$4 actionPerformed
+Jan 09, 2021 2:09:17 PM ClientPages.PointOfSalePage$4 actionPerformed
 INFO: Accessed server and database to update product details
-Jan 08, 2021 5:11:27 PM ServletCommunications.CheckProfit <init>
+Jan 09, 2021 2:09:22 PM ServletCommunications.CheckProfit <init>
+INFO: CP: connection made
+Jan 09, 2021 2:09:34 PM ServletCommunications.CheckProfit <init>
+INFO: CP: connection made
+Jan 09, 2021 2:09:35 PM ClientPages.DailyProfits$1 actionPerformed
+INFO: Checked database for profit
+Jan 09, 2021 2:22:03 PM ServletCommunications.CheckProfit <init>
+INFO: CP: connection made
+Jan 09, 2021 2:27:35 PM ServletCommunications.CheckProfit <init>
 INFO: CP: connection made

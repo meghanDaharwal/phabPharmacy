@@ -1,11 +1,15 @@
 package ClientPages;
 
+import ServletCommunications.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.border.CompoundBorder;
 import javax.swing.table.DefaultTableModel;
 
@@ -154,10 +158,14 @@ public class OnlineOrderList {
 
 // ****************************************TEST TEST TEST TEST*********************************************
         DefaultTableModel model = (DefaultTableModel) onlineOrderCustomers.getModel();
-        model.addRow(new Object[]{"001", "Martin", "Holloway","+44 7XXXXXXXXX","SW7 2AZ"});
-        model.addRow(new Object[]{"007", "James", "Bond","+44 7XXXXXXXXX","MI6"});
+        GetCustomers query = new GetCustomers();
+        Customers customers = new Customers();
+        customers = query.getCustomers();
+        for(int i = 0; i<customers.getCustomers().size();i++) {
+            model.addRow(new Object[]{customers.getCustomers().get(i).getId(),customers.getCustomers().get(i).getFirst_name(),customers.getCustomers().get(i).getLast_name(),customers.getCustomers().get(i).getPhone_no(),customers.getCustomers().get(i).getPostcode()});
+        }
         DefaultTableModel bModel = (DefaultTableModel) onlineOrderProducts.getModel();
-        bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
+        //bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
 // ********************************************************************************************************
 // Customer Details titled border
         JPanel customerDetails = new JPanel();
@@ -173,6 +181,20 @@ public class OnlineOrderList {
         onlineOrderCustomers.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                int row = onlineOrderCustomers.getSelectedRow();
+                String customerID = onlineOrderCustomers.getModel().getValueAt(row, 0).toString();
+                int customerId = Integer.parseInt(customerID);
+                System.out.println(customerId);
+                GetOrders orderQuery = new GetOrders(customerId);
+                Order tableOrder = new Order();
+                tableOrder = orderQuery.getOrder();
+                List<Product> products = new ArrayList<>();
+                products = tableOrder.getProducts();
+                for(int i = 0; i<products.size();i++)
+                {
+                    bModel.addRow(new Object[]{"0",products.get(i).getBrand(),products.get(i).getName(),products.get(i).getChange(),products.get(i).getUnitPrice()});
+                }
+                //bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
                 DefaultTableModel aModel = (DefaultTableModel)onlineOrderCustomers.getModel();
                 int aSelectedRowIndex = onlineOrderCustomers.rowAtPoint(e.getPoint());
                 for (int i = 0; i < customerDetailVal.length; i++) {

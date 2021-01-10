@@ -1,6 +1,6 @@
 package ClientPages;
 
-import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
+//import com.sun.java.swing.plaf.windows.WindowsComboBoxUI;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -113,7 +113,7 @@ public class InteractiveMap {
         Icon[] allMaps = {map,aMap,bMap,cMap,dMap,eMap,fMap};
         Icon[] allMedSections = {null,firstaid,skincare,headaches,digestion,allergy,coldandflu};
 
-        mapSections.setUI(new WindowsComboBoxUI());
+//        mapSections.setUI(new WindowsComboBoxUI());
         mapSections.setBackground(lightGray);
         mapSections.addActionListener(new ActionListener() {
             @Override
