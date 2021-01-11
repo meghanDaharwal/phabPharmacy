@@ -158,6 +158,7 @@ public class OnlineOrderList {
         model.addRow(new Object[]{"007", "James", "Bond","+44 7XXXXXXXXX","MI6"});
         DefaultTableModel bModel = (DefaultTableModel) onlineOrderProducts.getModel();
         bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
+        bModel.addRow(new Object[]{"1","Abc","Def Ghi","1","Allergies"});
 // ********************************************************************************************************
 // Customer Details titled border
         JPanel customerDetails = new JPanel();
@@ -289,6 +290,27 @@ public class OnlineOrderList {
                 dashboardPage.currentUser.setText(currentUser.getText());
                 dashboardPage.branchName.setText(branchName.getText());
                 frame.setVisible(false);
+            }
+        });
+
+        checkOffProduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel bModel = (DefaultTableModel)onlineOrderProducts.getModel();
+                int bRow = onlineOrderProducts.getSelectedRow();
+                bModel.removeRow(bRow);
+                for (int i = 0; i < productDetailVal.length; i++) {
+                    productDetailVal[i].setText("");
+                }
+                int a = onlineOrderProducts.getRowCount();
+                if(a==0){
+                    DefaultTableModel aModel = (DefaultTableModel)onlineOrderCustomers.getModel();
+                    int aRow = onlineOrderCustomers.getSelectedRow();
+                    aModel.removeRow(aRow);
+                    for (int i = 0; i < customerDetailVal.length; i++) {
+                        customerDetailVal[i].setText("");
+                    }
+                }
             }
         });
     }
