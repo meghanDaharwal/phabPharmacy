@@ -7,6 +7,7 @@ import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
@@ -37,11 +38,12 @@ public class DailyProfits {
     JLabel dailyProfitLbl = new JLabel("Today's Daily Profit:");
     JLabel currencyGBP = new JLabel("GBP");
     JLabel dailyProfit = new JLabel("0.00");
-    JButton searchDate = new JButton(search);
+    JLabel previousDateLbl = new JLabel("Enter Previous Date (YYYY-MM-DD)");
+    // Text fields
     JFormattedTextField date = new JFormattedTextField(createFormatter("####-##-##"));
-
     // Buttons
     JButton toDashboardPage = new JButton("Back to Home",home);
+    JButton searchDate = new JButton(search);
 
     DailyProfits(){
 
@@ -113,10 +115,12 @@ public class DailyProfits {
         JPanel dateSearch = new JPanel();
         dateSearch.setBackground(white);
 
-        Border titBorderCodeSrch = BorderFactory.createTitledBorder(null,"Add date (yyyy-mm-dd)", TitledBorder.DEFAULT_JUSTIFICATION,TitledBorder.DEFAULT_POSITION,new Font(null,Font.BOLD,14));
+        Border titBorderCodeSrch = BorderFactory.createTitledBorder(null,"Compare with previous dates", TitledBorder.DEFAULT_JUSTIFICATION,TitledBorder.DEFAULT_POSITION,new Font(null,Font.BOLD,14));
         dateSearch.setBorder(new CompoundBorder(titBorderCodeSrch,new EmptyBorder(0,0,0,0)));
         dateSearch.setVisible(true);
-        dateSearch.setBounds(100,180,330,70);
+        dateSearch.setBounds(200,190,400,70);
+
+        previousDateLbl.setFont(new Font(null,Font.BOLD,12));
 
         searchDate.setBorderPainted(false);
         searchDate.setFocusPainted(false);
@@ -124,8 +128,10 @@ public class DailyProfits {
         searchDate.setBackground(Color.lightGray);
 
         searchDate.setPreferredSize(new Dimension(25,25));
-        date.setPreferredSize(new Dimension(165,25));
+        date.setPreferredSize(new Dimension(140,25));
+        date.setHorizontalAlignment(JFormattedTextField.CENTER);
 
+        dateSearch.add(previousDateLbl);
         dateSearch.add(date);
         dateSearch.add(searchDate);
 
@@ -155,9 +161,8 @@ public class DailyProfits {
         previousProfits.getTableHeader().setBackground(new Color(173,216,232));
         previousProfits.getTableHeader().setBorder(BorderFactory.createLineBorder(new Color(173,216,232)));
 
-
         JScrollPane tabScrPne = new JScrollPane(previousProfits);
-        tabScrPne.setBounds(95,260,600,100);
+        tabScrPne.setBounds(200,270,400,130);
         tabScrPne.getViewport().setBackground(white);
         tabScrPne.setBorder(BorderFactory.createLineBorder(new Color(189, 210, 231)));
 
