@@ -165,6 +165,8 @@ public class DailyProfits {
 
 // Initialising frame
         JFrame frame = new JFrame("Phab Pharmacies - Find in Store");
+        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+        frame.setIconImage(titleIcon.getImage());
         frame.setSize(800,530);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);

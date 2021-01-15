@@ -293,6 +293,8 @@ public class OnlineOrderList {
 
 // Initialising frame
         JFrame frame = new JFrame("Phab Pharmacies - Online Orders List");
+        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+        frame.setIconImage(titleIcon.getImage());
         frame.setSize(800,530);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
@@ -313,12 +315,13 @@ public class OnlineOrderList {
                 String[] sectionNames = {"First Aid","Skincare","Headaches and Pain Relief","Digestion","Allergies","Cold and Flu"};
                 Icon[] allMaps = {aMap,bMap,cMap,dMap,eMap,fMap};
                 for(int i=0;i<allMaps.length;i++){
-                    if(productDetailVal[4].getText() == sectionNames[i]){
+                    if(productDetailVal[4].getText().equals(sectionNames[i])){
                         JPanel mapPanel = new JPanel();
                         mapPanel.add(new JLabel(allMaps[i]));
                         mapPanel.setBounds(0,0,350,450);
-
                         JFrame mapFrame = new JFrame("Product Location");
+                        ImageIcon titleIcon = new ImageIcon("Icons/titleicon.png");
+                        mapFrame.setIconImage(titleIcon.getImage());
                         mapFrame.setSize(350,450);
                         mapFrame.setLocationRelativeTo(null);
                         mapFrame.setLayout(new BorderLayout());

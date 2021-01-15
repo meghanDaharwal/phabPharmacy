@@ -1,6 +1,4 @@
-Jan 15, 2021 2:22:49 PM ServletCommunications.CheckUser <init>
+Jan 15, 2021 2:50:12 PM ServletCommunications.CheckUser <init>
 INFO: CP: connection made
-Jan 15, 2021 2:23:00 PM ServletCommunications.UpdateQuant <init>
-INFO: UQ: connection made
-Jan 15, 2021 2:23:00 PM ServletCommunications.UpdateOrderDB <init>
-INFO: RD: connection made
+Jan 15, 2021 2:50:27 PM ServletCommunications.CheckProfit <init>
+INFO: CP: connection made
