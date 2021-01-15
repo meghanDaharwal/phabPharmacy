@@ -98,33 +98,43 @@ public class LoginPage {
                 String password1 = password.getText();
                 System.out.println(password1);
                 CheckUser query = new CheckUser(username, password1);
-                if (query.getCheck() == "true"){
+                if (query.getCheck().equals("true")){
+                    System.out.println("succeeded");
                     DashboardPage dashboardPage = new DashboardPage();
                     dashboardPage.branchName.setText("Paddington");
                     dashboardPage.currentUser.setText(userName.getText());
                     frame.setVisible(false);
-                }
-                else {
-                //what happens when password rejected
                 }
             }
         });
         greenParkLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DashboardPage dashboardPage = new DashboardPage();
-                dashboardPage.branchName.setText("Green Park");
-                dashboardPage.currentUser.setText(userName.getText());
-                frame.setVisible(false);
+                String username = "'" + userName.getText() + "'";
+                String password1 = password.getText();
+                System.out.println(password1);
+                CheckUser query = new CheckUser(username, password1);
+                if (query.getCheck().equals("true")) {
+                    DashboardPage dashboardPage = new DashboardPage();
+                    dashboardPage.branchName.setText("Green Park");
+                    dashboardPage.currentUser.setText(userName.getText());
+                    frame.setVisible(false);
+                }
             }
         });
         milesEndLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DashboardPage dashboardPage = new DashboardPage();
-                dashboardPage.branchName.setText("Miles End");
-                dashboardPage.currentUser.setText(userName.getText());
-                frame.setVisible(false);
+                String username = "'" + userName.getText() + "'";
+                String password1 = password.getText();
+                System.out.println(password1);
+                CheckUser query = new CheckUser(username, password1);
+                if (query.getCheck().equals("true")) {
+                    DashboardPage dashboardPage = new DashboardPage();
+                    dashboardPage.branchName.setText("Miles End");
+                    dashboardPage.currentUser.setText(userName.getText());
+                    frame.setVisible(false);
+                }
             }
         });
     }

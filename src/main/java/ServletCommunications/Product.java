@@ -12,7 +12,8 @@ public class Product implements Serializable {
     float unitPrice;
     public String amount;
     int quantity;
-
+    int id;
+    String category;
     public Product(String name, String brand, int change) {
         this.name = name;
         this.brand = brand;
@@ -25,6 +26,13 @@ public class Product implements Serializable {
         this.saleLimit = saleLimit;
         this.unitPrice = unitPrice;
         this.amount = amount;
+    }
+    public Product(int barcode, String name, String brand, int quantity, String category){
+        this.name = name;
+        this.brand = brand;
+        this.change = quantity;
+        this.id = barcode;
+        this.category = category;
     }
 
     public Product(String name, String brand, float unitPrice, int quantity) {
@@ -55,5 +63,10 @@ public class Product implements Serializable {
     public int getQuantity() {
         return quantity;
     }
-
+    public int getId() {
+        return id;
+    }
+    public String getCategory() {
+        return category;
+    }
 }

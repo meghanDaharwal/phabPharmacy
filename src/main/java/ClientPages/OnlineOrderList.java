@@ -187,19 +187,22 @@ public class OnlineOrderList {
                 String customerID = onlineOrderCustomers.getModel().getValueAt(row, 0).toString();
                 int customerId = Integer.parseInt(customerID);
                 System.out.println(customerId);
-               // GetOrders orderQuery = new GetOrders(customerId);
-                GetOrders orderQuery = new GetOrders(2);
+                GetOrders orderQuery = new GetOrders(customerId);
                 Order tableOrder = new Order();
                 tableOrder = orderQuery.getOrder();
                 List<Product> products = new ArrayList<>();
                 products = tableOrder.getProducts();
                 for(int i = 0; i<products.size();i++)
                 {
-                    bModel.addRow(new Object[]{"0",products.get(i).getBrand(),products.get(i).getName(),products.get(i).getChange(),products.get(i).getUnitPrice()});
+                    bModel.addRow(new Object[]{products.get(i).getId(),products.get(i).getBrand(),products.get(i).getName(),products.get(i).getChange(),products.get(i).getCategory()});
                 }
-                //bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
                 DefaultTableModel aModel = (DefaultTableModel)onlineOrderCustomers.getModel();
                 int aSelectedRowIndex = onlineOrderCustomers.rowAtPoint(e.getPoint());
+                //Clear table then add details from selected customer
+                for (int i = 0; i < customerDetailVal.length; i++) {
+                    customerDetailVal[i].setFont(new Font(null,Font.PLAIN,12));
+                    customerDetailVal[i].setText(" ");
+                }
                 for (int i = 0; i < customerDetailVal.length; i++) {
                     customerDetailVal[i].setFont(new Font(null,Font.PLAIN,12));
                     customerDetailVal[i].setText(model.getValueAt(aSelectedRowIndex, i).toString());
@@ -240,11 +243,12 @@ public class OnlineOrderList {
         checkOffProduct.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                String name = "'" + productDetailVal[2].getText() + "'";
-                String brand = "'" + productDetailVal[1].getText() + "'";
+                String name = productDetailVal[2].getText() ;
+                String brand =  productDetailVal[1].getText() ;
                 int change = - Integer.parseInt(productDetailVal[3].getText());
                 UpdateQuant query = new UpdateQuant(name, brand, change);
-                UpdateOrderDB query2 = new UpdateOrderDB(Integer.parseInt(productDetailVal[0].getText()));
+                UpdateOrderDB query2 = new UpdateOrderDB(Integer.parseInt(productDetailVal[0].getText()),customerDetailVal[0].getText());
+                System.out.println(customerDetailVal[0].getText());
                 //log.info("Accessed server and database to update product details");
                 DefaultTableModel bModel = (DefaultTableModel)onlineOrderProducts.getModel();
                 int bRow = onlineOrderProducts.getSelectedRow();

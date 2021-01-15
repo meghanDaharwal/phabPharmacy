@@ -51,7 +51,6 @@ public class ReturnDetails {
                 this.saleLimit = p.saleLimit;
                 this.unitPrice = p.unitPrice;
                 this.amount = p.amount;
-                System.out.println(unitPrice);
             }
             bufferedReader.close();
 

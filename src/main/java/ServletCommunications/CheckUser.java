@@ -39,7 +39,6 @@ public class CheckUser {
             String inputLine;
 // Read the body of the response
             while ((inputLine = bufferedReader.readLine()) != null) {
-                System.out.println(inputLine);
                 this.check = inputLine;
             }
             bufferedReader.close();

@@ -36,7 +36,6 @@ public class GetOrders {
             order = new Order();
             while ((inputLine = bufferedReader.readLine()) != null) {
                 Gson gson = new Gson();
-                System.out.println(inputLine);
                 this.order=gson.fromJson(inputLine, Order.class);
                 //System.out.println(order);
             }

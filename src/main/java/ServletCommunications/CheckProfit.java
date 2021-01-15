@@ -39,7 +39,6 @@ public class CheckProfit {
             String inputLine;
 // Read the body of the response
             while ((inputLine = bufferedReader.readLine()) != null) {
-                System.out.println(inputLine);
                 this.profit = Float.parseFloat(inputLine);
             }
             bufferedReader.close();

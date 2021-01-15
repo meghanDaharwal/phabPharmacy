@@ -14,8 +14,9 @@ public class UpdateOrderDB {
 
     private static final Logger log= Logger.getLogger(UpdateOrderDB.class.getName());
 
-    public UpdateOrderDB(int id){
-        String message = String.valueOf(id);
+    public UpdateOrderDB(int id, String custId){
+        String message = String.valueOf(id) + " " + custId;
+        System.out.println(message);
         byte[] body = message.getBytes(StandardCharsets.UTF_8);
         URL myURL = null;
         try {
@@ -36,18 +37,7 @@ public class UpdateOrderDB {
             BufferedReader bufferedReader = new BufferedReader(new
                     InputStreamReader(conn.getInputStream(), "utf-8"));
             String inputLine;
-// Read the body of the response
-//        while ((inputLine = bufferedReader.readLine()) != null) {
-//            Gson gson = new Gson();
-//            Product p=gson.fromJson(inputLine, Product.class);
-//            this.name = p.name;
-//            this.brand = p.brand;
-//            this.saleLimit = p.saleLimit;
-//            this.unitPrice = p.unitPrice;
-//            this.amount = p.amount;
-//            System.out.println(unitPrice);
-//        }
-//        bufferedReader.close();
+            bufferedReader.close();
 
         } catch (MalformedURLException e) {
             log.severe("RD: problem with URL");
