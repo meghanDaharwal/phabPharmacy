@@ -82,7 +82,8 @@ set CMD_LINE_ARGS=%*
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\Pharmacy-1.0-SNAPSHOT.jar
+set CLASSPATH=%APP_HOME%\lib\Pharmacy-1.0-SNAPSHOT.jar;%APP_HOME%\lib\gson-2.7.jar;%APP_HOME%\lib\javax.servlet-api-3.1.0.jar;%APP_HOME%\lib\javax.websocket-api-1.0.jar
+
 
 @rem Execute Pharmacy
 "%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PHARMACY_OPTS%  -classpath "%CLASSPATH%" Main %CMD_LINE_ARGS%
