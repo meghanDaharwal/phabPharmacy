@@ -20,7 +20,7 @@ public class CheckProfit {
         byte[] body = message.getBytes(StandardCharsets.UTF_8);
         URL myURL = null;
         try {
-            myURL = new URL("https://phabbackend.herokuapp.com/accessProfit");
+            myURL = new URL("https://phabpharmacy.herokuapp.com/accessProfit");
             HttpURLConnection conn = null;
             conn = (HttpURLConnection) myURL.openConnection();
             log.info("CP: connection made");

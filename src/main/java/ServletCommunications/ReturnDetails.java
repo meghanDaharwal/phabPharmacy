@@ -25,7 +25,7 @@ public class ReturnDetails {
         byte[] body = message.getBytes(StandardCharsets.UTF_8);
         URL myURL = null;
         try {
-            myURL = new URL("https://phabbackend.herokuapp.com/details");
+            myURL = new URL("https://phabpharmacy.herokuapp.com/details");
             HttpURLConnection conn = null;
             conn = (HttpURLConnection) myURL.openConnection();
             log.info("RD: connection made");

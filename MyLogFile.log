@@ -1,32 +1,14 @@
-Jan 09, 2021 2:08:12 PM ServletCommunications.ReturnDetails <init>
+Jan 15, 2021 11:26:27 AM ServletCommunications.CheckUser <init>
+INFO: CP: connection made
+Jan 15, 2021 11:30:20 AM ServletCommunications.ReturnDetails <init>
 INFO: RD: connection made
-Jan 09, 2021 2:08:13 PM ClientPages.PointOfSalePage$1 actionPerformed
+Jan 15, 2021 11:30:21 AM ClientPages.PointOfSalePage$1 actionPerformed
 INFO: Accessed Servlet and Database for product details
-Jan 09, 2021 2:08:56 PM ServletCommunications.ReturnDetails <init>
+Jan 15, 2021 11:30:25 AM ServletCommunications.CheckProfit <init>
+INFO: CP: connection made
+Jan 15, 2021 11:41:03 AM ServletCommunications.ReturnDetails <init>
 INFO: RD: connection made
-Jan 09, 2021 2:08:57 PM ClientPages.PointOfSalePage$1 actionPerformed
+Jan 15, 2021 11:41:04 AM ClientPages.PointOfSalePage$1 actionPerformed
 INFO: Accessed Servlet and Database for product details
-Jan 09, 2021 2:09:02 PM ClientPages.PointOfSalePage$2 actionPerformed
+Jan 15, 2021 11:41:09 AM ClientPages.PointOfSalePage$2 actionPerformed
 INFO: Added product details to product list
-Jan 09, 2021 2:09:06 PM ServletCommunications.ReturnDetails <init>
-INFO: RD: connection made
-Jan 09, 2021 2:09:07 PM ClientPages.PointOfSalePage$1 actionPerformed
-INFO: Accessed Servlet and Database for product details
-Jan 09, 2021 2:09:09 PM ClientPages.PointOfSalePage$2 actionPerformed
-INFO: Added product details to product list
-Jan 09, 2021 2:09:14 PM ClientPages.PointOfSalePage$3 actionPerformed
-INFO: Removed product details from product list
-Jan 09, 2021 2:09:16 PM ServletCommunications.UpdateQuant <init>
-INFO: UQ: connection made
-Jan 09, 2021 2:09:17 PM ClientPages.PointOfSalePage$4 actionPerformed
-INFO: Accessed server and database to update product details
-Jan 09, 2021 2:09:22 PM ServletCommunications.CheckProfit <init>
-INFO: CP: connection made
-Jan 09, 2021 2:09:34 PM ServletCommunications.CheckProfit <init>
-INFO: CP: connection made
-Jan 09, 2021 2:09:35 PM ClientPages.DailyProfits$1 actionPerformed
-INFO: Checked database for profit
-Jan 09, 2021 2:22:03 PM ServletCommunications.CheckProfit <init>
-INFO: CP: connection made
-Jan 09, 2021 2:27:35 PM ServletCommunications.CheckProfit <init>
-INFO: CP: connection made

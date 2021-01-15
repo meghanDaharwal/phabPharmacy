@@ -20,7 +20,9 @@ import java.util.logging.Logger;
 
 import static java.awt.Color.lightGray;
 import static java.awt.Color.white;
-
+/*This class sets up the daily profit page, which displays the current days profit
+* as well as a text box which can be used to search for other dates. When a date is searched
+* for it is added to a table so multiple dates can be viewed at the same time.  */
 public class DailyProfits {
     // Logging
     private static final Logger log= Logger.getLogger(DailyProfits.class.getName());

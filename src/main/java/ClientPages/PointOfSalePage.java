@@ -21,7 +21,12 @@ import java.text.DecimalFormat;
 
 import static java.awt.Color.lightGray;
 import static java.awt.Color.white;
-
+/*This class sets up a page which a pharmacy employee can use to search for a product
+* using the search field. The product details will then be fetched from the online database
+* and the page will display it's details in the product details box. The employee can then
+* select how many units of that product has been sold and add it to an order. Once the order
+* is complete, the employee can complete the sale and the product and profit databse will be
+* updated appropriately to reflect the sale. */
 public class PointOfSalePage {
     // Logging
     private static final Logger log= Logger.getLogger(PointOfSalePage.class.getName());
@@ -227,8 +232,8 @@ with the appropriate quantities
             @Override
             public void actionPerformed(ActionEvent e) {
                 for(int i = products.size()-1; i>-1; i--){
-                    String name = "'" + products.get(i).getName() + "'";
-                    String brand = "'" + products.get(i).getBrand() + "'";
+                    String name = products.get(i).getName();
+                    String brand = products.get(i).getBrand();
                     int change = -products.get(i).getQuantity();
                     UpdateQuant query = new UpdateQuant(name, brand, change);
                     log.info("Accessed server and database to update product details");

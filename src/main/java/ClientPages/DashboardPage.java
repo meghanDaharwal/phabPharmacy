@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 
 import static java.awt.Color.lightGray;
 import static java.awt.Color.white;
-
+/*This class sets up the dashboard page which gives the user the option to navigate to
+* the other pages. */
 public class DashboardPage {
     // Icons and Logo
     Icon logo = new ImageIcon("Icons/logo.png");

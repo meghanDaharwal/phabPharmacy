@@ -1,5 +1,7 @@
 package ClientPages;
 
+import ServletCommunications.CheckUser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,10 +94,19 @@ public class LoginPage {
         paddingtonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DashboardPage dashboardPage = new DashboardPage();
-                dashboardPage.branchName.setText("Paddington");
-                dashboardPage.currentUser.setText(userName.getText());
-                frame.setVisible(false);
+                String username = "'" + userName.getText() + "'";
+                String password1 = password.getText();
+                System.out.println(password1);
+                CheckUser query = new CheckUser(username, password1);
+                if (query.getCheck() == "true"){
+                    DashboardPage dashboardPage = new DashboardPage();
+                    dashboardPage.branchName.setText("Paddington");
+                    dashboardPage.currentUser.setText(userName.getText());
+                    frame.setVisible(false);
+                }
+                else {
+                //what happens when password rejected
+                }
             }
         });
         greenParkLogin.addActionListener(new ActionListener() {

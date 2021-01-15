@@ -16,7 +16,10 @@ import javax.swing.table.DefaultTableModel;
 import static java.awt.Color.lightGray;
 import static java.awt.Color.white;
 
-
+/*This class sets up the page which displays all the customers from the online store in a table.
+* When a customer is selected in the table, the products which that customer has ordered from
+* the online store are displayed. The pharmacy employee can then check off products from that
+* list when that product has been shipped to the customer. */
 public class OnlineOrderList {
     // Icons
     Icon home = new ImageIcon("Icons/home.png");
@@ -162,12 +165,10 @@ public class OnlineOrderList {
         Customers customers = new Customers();
         customers = query.getCustomers();
         for(int i = 0; i<customers.getCustomers().size();i++) {
+            System.out.println(customers.getCustomers().get(i).getPostcode());
             model.addRow(new Object[]{customers.getCustomers().get(i).getId(),customers.getCustomers().get(i).getFirst_name(),customers.getCustomers().get(i).getLast_name(),customers.getCustomers().get(i).getPhone_no(),customers.getCustomers().get(i).getPostcode()});
         }
         DefaultTableModel bModel = (DefaultTableModel) onlineOrderProducts.getModel();
-        //bModel.addRow(new Object[]{"1029384756","Vicks","VapoRub","3","Cold and Flu"});
-// ********************************************************************************************************
-// Customer Details titled border
         JPanel customerDetails = new JPanel();
         customerDetails.setLayout(new GridLayout(5,2));
         customerDetails.setBackground(white);
@@ -181,11 +182,13 @@ public class OnlineOrderList {
         onlineOrderCustomers.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                bModel.setRowCount(0);
                 int row = onlineOrderCustomers.getSelectedRow();
                 String customerID = onlineOrderCustomers.getModel().getValueAt(row, 0).toString();
                 int customerId = Integer.parseInt(customerID);
                 System.out.println(customerId);
-                GetOrders orderQuery = new GetOrders(customerId);
+               // GetOrders orderQuery = new GetOrders(customerId);
+                GetOrders orderQuery = new GetOrders(2);
                 Order tableOrder = new Order();
                 tableOrder = orderQuery.getOrder();
                 List<Product> products = new ArrayList<>();
@@ -230,6 +233,33 @@ public class OnlineOrderList {
                 for(int i=0;i<productDetailVal.length;i++) {
                     productDetailVal[i].setFont(new Font(null,Font.PLAIN,12));
                     productDetailVal[i].setText(bModel.getValueAt(bSelectedRowIndex,i).toString());
+                }
+            }
+        });
+
+        checkOffProduct.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                String name = "'" + productDetailVal[2].getText() + "'";
+                String brand = "'" + productDetailVal[1].getText() + "'";
+                int change = - Integer.parseInt(productDetailVal[3].getText());
+                UpdateQuant query = new UpdateQuant(name, brand, change);
+                UpdateOrderDB query2 = new UpdateOrderDB(Integer.parseInt(productDetailVal[0].getText()));
+                //log.info("Accessed server and database to update product details");
+                DefaultTableModel bModel = (DefaultTableModel)onlineOrderProducts.getModel();
+                int bRow = onlineOrderProducts.getSelectedRow();
+                bModel.removeRow(bRow);
+                for (int i = 0; i < productDetailVal.length; i++) {
+                    productDetailVal[i].setText("");
+                }
+                int a = onlineOrderProducts.getRowCount();
+                if(a==0){
+                    DefaultTableModel aModel = (DefaultTableModel)onlineOrderCustomers.getModel();
+                    int aRow = onlineOrderCustomers.getSelectedRow();
+                    aModel.removeRow(aRow);
+                    for (int i = 0; i < customerDetailVal.length; i++) {
+                        customerDetailVal[i].setText("");
+                    }
                 }
             }
         });

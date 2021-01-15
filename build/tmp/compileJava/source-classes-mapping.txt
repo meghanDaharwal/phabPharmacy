@@ -1,10 +1,3 @@
-Main.java
- Main
-ClientPages/LoginPage.java
- ClientPages.LoginPage
- ClientPages.LoginPage$1
- ClientPages.LoginPage$2
- ClientPages.LoginPage$3
 ClientPages/PointOfSalePage.java
  ClientPages.PointOfSalePage
  ClientPages.PointOfSalePage$1
@@ -12,38 +5,50 @@ ClientPages/PointOfSalePage.java
  ClientPages.PointOfSalePage$3
  ClientPages.PointOfSalePage$4
  ClientPages.PointOfSalePage$5
-ClientPages/DailyProfits.java
- ClientPages.DailyProfits
- ClientPages.DailyProfits$1
- ClientPages.DailyProfits$2
-ServletCommunications/Product.java
- ServletCommunications.Product
-ServletCommunications/CheckProfit.java
- ServletCommunications.CheckProfit
 ServletCommunications/ReturnDetails.java
  ServletCommunications.ReturnDetails
+ServletCommunications/CheckProfit.java
+ ServletCommunications.CheckProfit
+ServletCommunications/Customers.java
+ ServletCommunications.Customers
+ServletCommunications/Product.java
+ ServletCommunications.Product
+ServletCommunications/Order.java
+ ServletCommunications.Order
+ServletCommunications/Customer.java
+ ServletCommunications.Customer
+ServletCommunications/GetOrders.java
+ ServletCommunications.GetOrders
+ServletCommunications/UpdateOrderDB.java
+ ServletCommunications.UpdateOrderDB
 ServletCommunications/UpdateQuant.java
  ServletCommunications.UpdateQuant
+ServletCommunications/GetCustomers.java
+ ServletCommunications.GetCustomers
 ClientPages/InteractiveMap.java
  ClientPages.InteractiveMap
  ClientPages.InteractiveMap$1
  ClientPages.InteractiveMap$2
-ServletCommunications/Customer.java
- ServletCommunications.Customer
-ServletCommunications/GetCustomers.java
- ServletCommunications.GetCustomers
-ServletCommunications/Customers.java
- ServletCommunications.Customers
-ServletCommunications/GetOrders.java
- ServletCommunications.GetOrders
-ServletCommunications/Order.java
- ServletCommunications.Order
 ClientPages/OnlineOrderList.java
  ClientPages.OnlineOrderList
  ClientPages.OnlineOrderList$1
  ClientPages.OnlineOrderList$2
  ClientPages.OnlineOrderList$3
  ClientPages.OnlineOrderList$4
+ ClientPages.OnlineOrderList$5
+ClientPages/DailyProfits.java
+ ClientPages.DailyProfits
+ ClientPages.DailyProfits$1
+ ClientPages.DailyProfits$2
+ServletCommunications/CheckUser.java
+ ServletCommunications.CheckUser
+Main.java
+ Main
+ClientPages/LoginPage.java
+ ClientPages.LoginPage
+ ClientPages.LoginPage$1
+ ClientPages.LoginPage$2
+ ClientPages.LoginPage$3
 ClientPages/DashboardPage.java
  ClientPages.DashboardPage
  ClientPages.DashboardPage$1

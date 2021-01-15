@@ -1,7 +1,5 @@
 package ServletCommunications;
 
-import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -10,23 +8,22 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-/* This class takes the name, brand and change in quantity of a product and updates the quantity
-* of the corresponding product entry in the pharmacy database. It makes a single post
-* request to the update servlet. Logs beginning with UQ come from this class  */
-public class UpdateQuant {
-    private static final Logger log= Logger.getLogger(UpdateQuant.class.getName());
-    public UpdateQuant(String name, String brand, int change){
-        Product p = new Product(name, brand, change);
-        Gson gson = new Gson();
-        String jsonString = gson.toJson(p);
-        String message = jsonString;
+/*  This class takes a date in it's constructor in order to perform the servlet
+    communication required to check the profit made at that date.
+    It makes a single post to the accessProfit servlet, the response to which
+    is the profit on the required date. Logs beginning with CP come from this class */
+public class CheckUser {
+    private static final Logger log= Logger.getLogger(CheckUser.class.getName());
+    public String check;
+    public CheckUser(String name, String password){
+        String message = name + " " + password;
         byte[] body = message.getBytes(StandardCharsets.UTF_8);
         URL myURL = null;
         try {
-            myURL = new URL("https://phabpharmacy.herokuapp.com/update");
+            myURL = new URL("https://phabpharmacy.herokuapp.com/checkUser");
             HttpURLConnection conn = null;
             conn = (HttpURLConnection) myURL.openConnection();
-            log.info("UQ: connection made");
+            log.info("CP: connection made");
 // Set up the header
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Accept", "text/html");
@@ -43,22 +40,25 @@ public class UpdateQuant {
 // Read the body of the response
             while ((inputLine = bufferedReader.readLine()) != null) {
                 System.out.println(inputLine);
+                this.check = inputLine;
             }
             bufferedReader.close();
 
         } catch (MalformedURLException e) {
-            log.severe("UQ: problem with URL");
+            log.severe("RD: problem with URL");
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
-            log.severe("UQ: an i/o error has occured when connecting to the URL");
             e.printStackTrace();
         } catch (ProtocolException e) {
-            log.severe("UQ: protocol error, such as problem with TCP");
+            log.severe("RD: protocol error, such as problem with TCP");
             e.printStackTrace();
         } catch (IOException e) {
-            log.severe("UQ: an i/o error has occured");
+            log.severe("RD: an i/o error has occured");
             e.printStackTrace();
         }
 
+    }
+    public String getCheck() {
+        return check;
     }
 }

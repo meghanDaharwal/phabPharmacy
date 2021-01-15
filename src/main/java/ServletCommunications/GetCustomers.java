@@ -17,7 +17,7 @@ public class GetCustomers {
         byte[] body = message.getBytes(StandardCharsets.UTF_8);
         URL myURL = null;
         try {
-            myURL = new URL("https://phabbackend.herokuapp.com/customers");
+            myURL = new URL("https://phabpharmacy.herokuapp.com/customers");
             HttpURLConnection conn = null;
             conn = (HttpURLConnection) myURL.openConnection();
 // Set up the header
